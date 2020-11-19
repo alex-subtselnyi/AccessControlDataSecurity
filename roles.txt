@@ -1,5 +1,5 @@
 Alice manager
-Bob janitor
+Bob technician
 Cecilia power_user
 David user
 Erica user

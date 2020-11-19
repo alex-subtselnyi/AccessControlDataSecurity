@@ -1,4 +1,4 @@
 manager print,queue,topQueue,start,stop,restart,status,readConfig,readConfig
-janitor start,stop,restart,status,readConfig,readConfig
+technician start,stop,restart,status,readConfig,readConfig
 power_user print,queue,topQueue,restart
 user print,queue
