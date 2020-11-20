@@ -6,6 +6,8 @@ To run the server, run the class "Server.java" located in DSAuthLab_Server/src/v
 The first time the server is run, the administrator is prompted to insert a key, which is the encryption key of the server.\
 After running the server the first time, the dummy users are generated and added to the "users.txt" file.\
 Every time the server is run, the key given in the initial run needs to be input in order for the server to start.
+In this case, the server has already been run and the users.txt file generated.
+The key to decrypt the file, and start the server, is "password".
 
 ## Client 
 To run the client, run the class "Client.java" located in DSAuthLab_Client/src/view.\
