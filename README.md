@@ -15,12 +15,12 @@ In order for the client to work, the server needs to be already running.
 This branch implements the access control list.
 
 ## Users
-The credentials for the users are the following (format: username password):
-Alice password1
-Cecilia password3
-David password4
-Erica password5
-Fred password6
-George password7
-Henry password8
-Ida password9
+The credentials for the users are the following (format: username password):\
+Alice password1\
+Cecilia password3\
+David password4\
+Erica password5\
+Fred password6\
+George password7\
+Henry password8\
+Ida password9\
