@@ -29,6 +29,9 @@ public class AccessControlPolicy {
      */
     public boolean checkAccess(String username, String method) {
         var acl = accessList.get(username);
+        if (acl == null) {
+            return false;
+        }
         System.out.println(acl);
         var permissions = acl.split(",");
         for(String perm: permissions) {
