@@ -12,7 +12,7 @@ To run the client, run the class "Client.java" located in DSAuthLab_Client/src/v
 In order for the client to work, the server needs to be already running.
 
 ## Branches
-This branch implements the access control list.
+This branch implements the role based access control.
 
 ## Users
 The credentials for the users are the following (format: username password):\
