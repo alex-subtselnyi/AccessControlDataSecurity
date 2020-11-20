@@ -2,13 +2,8 @@ package pwdStorage;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.security.DigestInputStream;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.prefs.Preferences;
@@ -16,10 +11,9 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
-import model.ACL;
+import model.Permission;
+import model.Role;
 import model.User;
 import util.HashHelper;
 
@@ -27,6 +21,8 @@ public class FileHelper {
 	
 	public static final String FILENAME = "." + File.separator + "users.txt";
 	public static final String ACLFILE = "." + File.separator + "acl.txt";
+	public static final String ROLESFILE = "." + File.separator + "roles.txt";
+	public static final String PERMISSIONSFILE = "." + File.separator + "permissions.txt";
 	private static String _password = "";
 	
 	public static void setPassword(String password) {
@@ -174,19 +170,18 @@ public class FileHelper {
 	}
 
 	/**
-	 * Retrieves all users stored in the users public file. It checks the integrity of the file to ensure it is not corrupted.
-	 * If it hasn't, it uses the password uses to encrypt the file to decrypt and thus retrieve the stored users.
+	 * Retrieves permissions from file
 	 * @return
 	 */
-	public static ArrayList<ACL> readACLFromFile() {
-		var acls = new ArrayList<ACL>();
+	public static HashMap<String, String> readPermissionsFromFile() {
+		HashMap<String, String> permissions = new HashMap<>();
 
-		try(BufferedReader reader = new BufferedReader(new FileReader(ACLFILE))) {
+		try(BufferedReader reader = new BufferedReader(new FileReader(PERMISSIONSFILE))) {
 
 			String line = reader.readLine();
 			while(line != null) {
-				var acl = ACL.deserializeACL(line);
-				acls.add(acl);
+				var perm = Permission.deserializePermission(line);
+				permissions.put(perm.getRole(), perm.getPermissions());
 
 				line = reader.readLine();
 			}
@@ -194,7 +189,30 @@ public class FileHelper {
 		} catch (Exception ex) {
 			System.err.println("Error encrypting/decrypting file" + ex.getMessage());
 		}
-		return acls;
+		return permissions;
+	}
+
+	/**
+	 * Retrieves roles for users from FIle
+	 * @return
+	 */
+	public static HashMap<String, String> readRolesFromFile() {
+		HashMap<String, String> roleNames = new HashMap<>();
+
+		try(BufferedReader reader = new BufferedReader(new FileReader(ROLESFILE))) {
+
+			String line = reader.readLine();
+			while(line != null) {
+				var role = Role.deserializeRole(line);
+				roleNames.put(role.getUsername(), role.getRole());
+
+				line = reader.readLine();
+			}
+
+		} catch (Exception ex) {
+			System.err.println("Error encrypting/decrypting file" + ex.getMessage());
+		}
+		return roleNames;
 	}
 
 	
