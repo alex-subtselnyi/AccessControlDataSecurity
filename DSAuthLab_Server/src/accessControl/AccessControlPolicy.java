@@ -34,6 +34,9 @@ public class AccessControlPolicy {
      */
     public boolean checkAccess(String username, String method) {
         var role = rolesList.get(username);
+        if (role == null) {
+            return false;
+        }
         var permissions = permissionList.get(role);
         System.out.println(role);
         var perms = permissions.split(",");
