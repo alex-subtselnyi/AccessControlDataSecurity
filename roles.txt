@@ -4,6 +4,5 @@ Cecilia power_user
 David user
 Erica user
 Fred user
-George user
 Henry user
 Ida power_user
