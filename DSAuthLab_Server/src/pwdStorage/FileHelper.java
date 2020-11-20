@@ -163,12 +163,13 @@ public class FileHelper {
 		var users = new ArrayList<User>();
 		
 		users.add(new User("Alice", HashHelper.getSaltedHash("password1")));
-		users.add(new User("Bob", HashHelper.getSaltedHash("password2")));
 		users.add(new User("Cecilia", HashHelper.getSaltedHash("password3")));
 		users.add(new User("David", HashHelper.getSaltedHash("password4")));
 		users.add(new User("Erica", HashHelper.getSaltedHash("password5")));
 		users.add(new User("Fred", HashHelper.getSaltedHash("password6")));
 		users.add(new User("George", HashHelper.getSaltedHash("password7")));
+		users.add(new User("Henry", HashHelper.getSaltedHash("password8")));
+		users.add(new User("Ida", HashHelper.getSaltedHash("password9")));
 
 		return users;
 	}
