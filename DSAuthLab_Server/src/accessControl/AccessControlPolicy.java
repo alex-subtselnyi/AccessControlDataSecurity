@@ -1,43 +1,37 @@
 package accessControl;
 
-import model.Role;
+import model.ACL;
+import model.User;
 import pwdStorage.FileHelper;
 
 import java.util.HashMap;
 
 public class AccessControlPolicy {
 
-    private HashMap<String, String> rolesList = new HashMap<>();
-    private HashMap<String, String> permissionList = new HashMap<>();
+    private HashMap<String, String> accessList = new HashMap<>();
 
     public AccessControlPolicy(){
-        getRoles();
-        getPermissions();
+        getAcceses();
     }
 
     /**
-     * Updates the dictionary of roles reading from the roles.txt file.
+     * Updates the dictionary of access controls  by reading from the acl.txt file.
      */
-    public void getRoles() {
-        rolesList = FileHelper.readRolesFromFile();
-    }
-
-    /**
-     * Updates the dictionary of roles reading from the roles.txt file.
-     */
-    public void getPermissions() {
-        permissionList = FileHelper.readPermissionsFromFile();
+    public void getAcceses() {
+        var acls = FileHelper.readACLFromFile();
+        for(ACL acl: acls) {
+            accessList.put(acl.getUsername(), acl.getPermissions());
+        }
     }
 
     /**
      * Checks the permission.
      */
     public boolean checkAccess(String username, String method) {
-        var role = rolesList.get(username);
-        var permissions = permissionList.get(role);
-        System.out.println(role);
-        var perms = permissions.split(",");
-        for(String perm: perms) {
+        var acl = accessList.get(username);
+        System.out.println(acl);
+        var permissions = acl.split(",");
+        for(String perm: permissions) {
             if (perm.equals(method)) {
                 System.out.println("found");
                 return true;
