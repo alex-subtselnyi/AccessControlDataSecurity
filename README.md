@@ -1,5 +1,5 @@
-# Authentication Lab
-This is the implementation of the RMI server with password based authentication.
+# Access Control Lab
+This is the implementation of the RMI server with password based authentication and role based access control.
 
 ## Server 
 To run the server, run the class "Server.java" located in DSAuthLab_Server/src/view.\
