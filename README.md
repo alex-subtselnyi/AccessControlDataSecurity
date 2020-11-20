@@ -8,3 +8,7 @@ Every time the server is run, the key given in the initial run needs to be input
 ## Client 
 To run the client, run the class "Client.java" located in DSAuthLab_Client/src/view.\
 In order for the client to work, the server needs to be already running.
+
+## Branches
+The acl branch implements access control list.\
+The roles branch implements the role based access control.
